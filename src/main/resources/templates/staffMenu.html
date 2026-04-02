@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff menu</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+    </style>
+</head>
+<body>
+<div style="text-align: center; background-color: #FF7F50;">
+    <h1>Active orders</h1>
+</div>
+<form method="get" action="completedOrders">
+    <button type="submit" class="button" align="center">Completed orders</button>
+</form>
+<table border="3px" bgcolor="#FF6347">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>Total price</th>
+        <th>Products</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody bgcolor="#FF7F50">
+    <tr th:each="order,iter:${orders}">
+        <td width="80" height="30"><h4 align="center" th:text="${order.getId()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${order.getDate()}"></h4></td>
+        <td width="80" height="30"><h4 align="center">working on it</h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${order.getTotalPrice()}"></h4></td>
+        <td width="80" height="30">
+            <div th:each="product:${order.getProducts()}">
+                <h4 align="center" th:text="${product.getName()}"></h4>
+            </div>
+        </td>
+        <td width="80" height="30"><a th:href="@{/completeOrder/{index}(index=${iter.index})}"
+                                      class="button">Complete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

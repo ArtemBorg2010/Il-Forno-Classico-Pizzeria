@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Active orders</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div style="text-align: center; background-color: #FF7F50;">
+    <h1>Orders</h1>
+</div>
+<table border="3px" bgcolor="#FF6347">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Customer Id</th>
+        <th>Employee Id</th>
+        <th>Total Price</th>
+        <th>empty</th>
+    </tr>
+    </thead>
+    <tbody bgcolor="#FF7F50">
+    <tr th:each="order:${orders}">
+        <td width="80" height="30"><h4 align="center" th:text="${order.getId()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${order.getDate()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${order.getCustomer()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${order.getEmployee()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${order.getTotalPrice()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="empty"></h4></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

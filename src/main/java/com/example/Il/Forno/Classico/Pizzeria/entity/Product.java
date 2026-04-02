@@ -19,6 +19,7 @@ public class Product {
     private String name;
     private String category;
     private double price;
+    private double cost;
     private double rating;
 
     @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

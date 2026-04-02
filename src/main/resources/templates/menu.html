@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+    </style>
+</head>
+<body>
+<div style="text-align: center; background-color: #FF7F50;">
+    <h1>Menu</h1>
+</div>
+<form method="get" action="cart">
+    <button type="submit" class="button" align="center">To cart</button>
+</form>
+<table border="3px" bgcolor="#FF6347">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Cost</th>
+        <th>Rating</th>
+        <th>Add to cart</th>
+    </tr>
+    </thead>
+    <tbody bgcolor="#FF7F50">
+    <tr th:each="product:${products}">
+        <td width="80" height="30"><h4 align="center" th:text="${product.getName()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${product.getCategory()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${product.getPrice()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${product.getCost()}"></h4></td>
+        <td width="80" height="30"><h4 align="center" th:text="${product.getRating()}"></h4></td>
+        <td width="80" height="30"><a th:href="@{/addToCart/{id}(id=${product.getId()})}" class="button">Add</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

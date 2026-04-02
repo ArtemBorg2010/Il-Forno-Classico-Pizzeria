@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product</title>
+</head>
+<body>
+<form method="post" action="addedProduct">
+    Name: <input type="text" name="name" id="name"><br>
+    <select name="category" id="category">
+        <option th:each="c:${categories}" th:text="${c}" th:value="${c}"></option>
+    </select><br>
+    Price: <input type="text" name="price" id="price"><br>
+    Cost: <input type="text" name="cost" id="cost"><br>
+    <button type="submit">Add</button>
+</form>
+</body>
+</html>

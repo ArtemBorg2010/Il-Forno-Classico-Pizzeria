@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Who are you?</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .button{
+            display: inline-block;
+            padding:15px 40px;
+            font-size:18px;
+            border:none;
+            color:white;
+            text-decoration: none;
+            background:linear-gradient(45deg,#ff0066,#ffcc00);
+            border-radius:40px;
+            cursor:pointer;
+            transition:0.4s;
+            box-shadow:0 0 15px #ff0066;
+
+            display: block;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .button:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 25px #ff0066, 0 0 50px #ffcc00;
+        }
+
+    </style>
+</head>
+<body>
+<div style="text-align: center; background-color: #FF7F50;">
+    <h1 align="center">Welcome to "Il-Forno-Classico Pizzeria"!</h1>
+    <h2 align="center">Choose your role below.</h2>
+</div>
+<form method="get" action="customerAuthorisation">
+    <button class="button" type="submit">Customer</button>
+</form>
+<form method="get" action="employeeAuthorisation">
+    <button class="button" type="submit">Staff</button>
+</form>
+</body>
+</html>

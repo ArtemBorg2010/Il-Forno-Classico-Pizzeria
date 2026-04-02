@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,5 +22,9 @@ public class Employee {
     private String hireDate;
     private String pizzeriaLocation;
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Orders> orders;
+    private List<Orders> orders=new ArrayList<>();
+
+    public void addOrder(Orders order) {
+        orders.add(order);
+    }
 }
