@@ -1,0 +1,67 @@
+body {
+    /* Путь к вашей картинке */
+    background-image: url('/images/PIZZERIA.jpg');
+
+    /* Картинка не повторяется */
+    background-repeat: no-repeat;
+
+    /* Картинка растягивается по размеру окна */
+    background-size: cover;
+
+    /* Картинка центрируется */
+    background-position: center;
+
+    /* Картинка остается на месте при прокрутке */
+    background-attachment: fixed;
+}
+
+/*.button {
+    !* Делаем ссылку блочно-строчной, чтобы работали отступы и размеры *!
+    display: inline-block;
+
+    !* Оформление фона и текста *!
+    background-color: #3CB371;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; !* Убираем подчеркивание ссылки *!
+
+    !* Скругление углов и шрифт *!
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+
+    !* Плавный переход для эффектов *!
+    transition: background-color 0.3s;
+
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+!* Эффект при наведении *!
+.button:hover {
+    background-color: #0056b3;
+}*/
+
+.button{
+    display: inline-block;
+    padding:15px 40px;
+    font-size:18px;
+    border:none;
+    color:white;
+    text-decoration: none;
+    background:linear-gradient(45deg,#ff0066,#ffcc00);
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 0 15px #ff0066;
+
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #ff0066, 0 0 50px #ffcc00;
+}

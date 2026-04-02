@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +33,10 @@ public class Orders {
             joinColumns = @JoinColumn(name = "order_id"), // колонка этой сущности
             inverseJoinColumns = @JoinColumn(name = "product_id") // колонка связанной сущности
     )
-    private List<Product> products;
+    private List<Product> products=new ArrayList<>();
+    private boolean active;
 
+    public void addProduct(Product product) {
+        products.add(product);
+    }
 }
