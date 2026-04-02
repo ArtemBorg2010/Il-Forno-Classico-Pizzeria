@@ -21,13 +21,10 @@ import java.util.List;
 public class MainController {
     @Autowired
     private CustomerRepository customerRepository;
-
     @Autowired
     private EmployeeRepository employeeRepository;
-
     @Autowired
     private ProductRepository productRepository;
-
     @Autowired
     private OrderRepository orderRepository;
 
