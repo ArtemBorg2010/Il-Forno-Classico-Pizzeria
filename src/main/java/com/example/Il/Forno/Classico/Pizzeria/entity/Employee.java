@@ -21,8 +21,11 @@ public class Employee {
     private String position;
     private String hireDate;
     private String pizzeriaLocation;
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Orders> orders=new ArrayList<>();
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Orders> orders = new ArrayList<>();
+
+    private String nickname;
+    private String password;
 
     public void addOrder(Orders order) {
         orders.add(order);

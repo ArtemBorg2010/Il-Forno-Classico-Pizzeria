@@ -26,7 +26,7 @@
     </tr>
     </thead>
     <tbody bgcolor="#FF7F50">
-    <tr th:each="order,iter:${orders}">
+    <tr th:each="order:${orders}">
         <td width="80" height="30"><h4 align="center" th:text="${order.getId()}"></h4></td>
         <td width="80" height="30"><h4 align="center" th:text="${order.getDate()}"></h4></td>
         <td width="80" height="30"><h4 align="center">working on it</h4></td>
@@ -36,7 +36,7 @@
                 <h4 align="center" th:text="${product.getName()}"></h4>
             </div>
         </td>
-        <td width="80" height="30"><a th:href="@{/completeOrder/{index}(index=${iter.index})}"
+        <td width="80" height="30"><a th:href="@{/completeOrder/{id}(id=${order.getId()})}"
                                       class="button">Complete</a></td>
     </tr>
     </tbody>

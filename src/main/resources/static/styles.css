@@ -43,7 +43,7 @@ body {
     background-color: #0056b3;
 }*/
 
-.button{
+/*.button{
     display: inline-block;
     padding:15px 40px;
     font-size:18px;
@@ -64,4 +64,113 @@ body {
 .button:hover{
     transform:scale(1.1);
     box-shadow:0 0 25px #ff0066, 0 0 50px #ffcc00;
+}*/
+
+/*.button{
+    display: inline-block;
+    padding:15px 40px;
+    font-size:18px;
+    border:none;
+    color:white;
+    text-decoration: none;
+    background:linear-gradient(45deg,#01F9C6,#16E2F5);
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 0 15px #01F9C6;
+
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #01F9C6, 0 0 50px #16E2F5;
+}*/
+
+.button{
+    display: inline-block;
+    padding:15px 40px;
+    font-size:18px;
+    border:none;
+    color:white;
+    text-decoration: none;
+    background:linear-gradient(45deg,#22CE83,#E8F1D4);
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 0 15px #22CE83;
+
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #22CE83, 0 0 50px #E8F1D4;
+}
+
+/* Базовый стиль полей (логин и пароль) */
+.glass-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    box-sizing: border-box; /* Чтобы padding не раздувал ширину */
+
+    /* Фон и прозрачность */
+    background: rgba(0, 0, 0, 0.3); /* Более глубокое затемнение внутри */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+
+    /* Текст */
+    color: white;
+    font-size: 16px;
+    outline: none; /* Убираем стандартную синюю рамку браузера */
+
+    /* Плавный переход для анимации свечения */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Эффект при нажатии (фокусе) */
+.glass-input:focus {
+    background: rgba(0, 0, 0, 0.5); /* Еще большее затемнение при вводе */
+    border-color: #FF7F50;          /* Цвет коралловый */
+
+    /* Мягкое внешнее свечение */
+    box-shadow: 0 0 15px rgba(255, 127, 80, 0.4),
+    inset 0 0 5px rgba(255, 127, 80, 0.2);
+}
+
+/* Цвет текста-подсказки */
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+.glass-box {
+    /* Центрирование самого блока */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Размеры */
+    padding: 2rem;
+    width: 400px;
+    max-width: 90%;
+
+    /* Эффект стекла */
+    background: rgba(0, 0, 0, 0.4); /* Черный цвет с прозрачностью 40% */
+    backdrop-filter: blur(10px);    /* Сила размытия */
+    -webkit-backdrop-filter: blur(10px); /* Поддержка Safari */
+
+    /* Декор */
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /*border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая светлая граница */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);  /* Мягкая тень */
+    color: white;
+    text-align: center;
 }

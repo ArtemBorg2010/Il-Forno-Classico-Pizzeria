@@ -4,9 +4,52 @@
     <meta charset="UTF-8">
     <title>Staff Authorisation</title>
     <link rel="stylesheet" href="/styles.css">
+    <style>
+        .button{
+            display: inline-block;
+            padding:15px 40px;
+            font-size:18px;
+            border:none;
+            color:white;
+            text-decoration: none;
+            background:linear-gradient(45deg,#22CE83,#E8F1D4);
+            border-radius:40px;
+            cursor:pointer;
+            transition:0.4s;
+            box-shadow:0 0 15px #22CE83;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 25px #22CE83, 0 0 50px #E8F1D4;
+        }
+    </style>
 </head>
 <body>
-<div style="text-align: center; background-color: #FF7F50;">
+<!--<div class="glass-box">
+    <h1>Welcome to "Il-Forno-Classico Pizzeria"!</h1>
+    <h2>Log in</h2>
+    <form method="post" action="customerLogin">
+        <input type="text" name="nicknameLogin" id="nicknameLogin" placeholder="Nickname" class="glass-input"><br>
+        <input type="password" name="passwordLogin" id="passwordLogin" placeholder="Password" class="glass-input"><br>
+        <button class="button" type="submit">Log in</button>
+    </form>
+
+    <p>Or</p>
+    <h2>Register</h2>
+    <form method="post" action="customerRegister">
+        <input type="text" name="name" id="name" placeholder="Name" class="glass-input"><br>
+        <input type="text" name="phone" id="phone" placeholder="Phone number" class="glass-input"><br>
+        <input type="text" name="nickname" id="nickname" placeholder="Nickname" class="glass-input"><br>
+        <input type="password" name="password" id="password" placeholder="Password" class="glass-input"><br>
+        <button class="button" type="submit">Register</button>
+    </form>
+</div>
+&lt;!&ndash;<div style="text-align: center; background-color: #FF7F50;">
     <h1>Sign up or log in</h1>
 </div>
 <form method="post" action="employeeAuthorised">
@@ -14,6 +57,26 @@
     Position: <input type="text" name="position" id="position"><br>
     Pizzeria location: <input type="text" name="pizzeriaLocation" id="pizzeriaLocation">
     <button type="submit">Log in</button>
-</form>
+</form>&ndash;&gt;-->
+
+<div class="glass-box">
+    <h1>Welcome to "Il-Forno-Classico Pizzeria"!</h1>
+    <h2>Log in</h2>
+    <form method="post" action="employeeLogin">
+        <input type="text" name="nicknameLogin" id="nicknameLogin" placeholder="Nickname" class="glass-input"><br>
+        <input type="password" name="passwordLogin" id="passwordLogin" placeholder="Password" class="glass-input"><br>
+        <button class="button" type="submit">Log in</button>
+    </form>
+
+    <p>Or</p>
+    <h2>Register</h2>
+    <form method="post" action="employeeRegister">
+        <input type="text" name="name" id="name" placeholder="Name" class="glass-input"><br>
+        <input type="text" name="position" id="position" placeholder="Position" class="glass-input"><br>
+        <input type="text" name="nickname" id="nickname" placeholder="Nickname" class="glass-input"><br>
+        <input type="password" name="password" id="password" placeholder="Password" class="glass-input"><br>
+        <button class="button" type="submit">Register</button>
+    </form>
+</div>
 </body>
 </html>

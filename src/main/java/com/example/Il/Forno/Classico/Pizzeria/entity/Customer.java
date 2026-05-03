@@ -21,4 +21,7 @@ public class Customer {
     private String registrationDate;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Orders> orders;
+
+    private String nickname;
+    private String password;
 }

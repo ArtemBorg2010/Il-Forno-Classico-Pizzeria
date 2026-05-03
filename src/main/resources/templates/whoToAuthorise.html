@@ -12,34 +12,52 @@
             border:none;
             color:white;
             text-decoration: none;
-            background:linear-gradient(45deg,#ff0066,#ffcc00);
+            background:linear-gradient(45deg,#22CE83,#E8F1D4);
             border-radius:40px;
             cursor:pointer;
             transition:0.4s;
-            box-shadow:0 0 15px #ff0066;
+            box-shadow:0 0 15px #22CE83;
 
             display: block;
-            margin-left: 0;
+            margin-left: auto;
             margin-right: auto;
         }
 
         .button:hover{
             transform:scale(1.1);
-            box-shadow:0 0 25px #ff0066, 0 0 50px #ffcc00;
+            box-shadow:0 0 25px #22CE83, 0 0 50px #E8F1D4;
         }
 
     </style>
 </head>
 <body>
-<div style="text-align: center; background-color: #FF7F50;">
+<div class="glass-box">
+    <h1>Welcome to "Il-Forno-Classico Pizzeria"!</h1>
+    <p>Choose your role below.</p>
+
+    <form method="get" action="guestAuthorisation">
+        <button class="button" type="submit">Guest</button>
+    </form>
+
+    <h3>Or</h3>
+    <form method="get" action="employeeAuthorisation">
+        <button class="button" type="submit">Staff</button>
+    </form>
+</div>
+
+<!--<div style="text-align: center; background-color: #FF7F50;">
     <h1 align="center">Welcome to "Il-Forno-Classico Pizzeria"!</h1>
     <h2 align="center">Choose your role below.</h2>
 </div>
-<form method="get" action="customerAuthorisation">
-    <button class="button" type="submit">Customer</button>
-</form>
-<form method="get" action="employeeAuthorisation">
-    <button class="button" type="submit">Staff</button>
-</form>
+<div style="text-align: center">
+    <form method="get" action="customerAuthorisation">
+        <button class="button" type="submit">Customer</button>
+    </form>
+</div>
+<div style="text-align: center">
+    <form method="get" action="employeeAuthorisation">
+        <button class="button" type="submit">Staff</button>
+    </form>
+</div>-->
 </body>
 </html>

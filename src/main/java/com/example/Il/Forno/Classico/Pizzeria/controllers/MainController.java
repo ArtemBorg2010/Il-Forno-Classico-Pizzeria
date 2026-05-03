@@ -1,11 +1,9 @@
 package com.example.Il.Forno.Classico.Pizzeria.controllers;
 
-import com.example.Il.Forno.Classico.Pizzeria.entity.Employee;
-import com.example.Il.Forno.Classico.Pizzeria.entity.Product;
-import com.example.Il.Forno.Classico.Pizzeria.repos.CustomerRepository;
-import com.example.Il.Forno.Classico.Pizzeria.repos.EmployeeRepository;
-import com.example.Il.Forno.Classico.Pizzeria.repos.OrderRepository;
-import com.example.Il.Forno.Classico.Pizzeria.repos.ProductRepository;
+import com.example.Il.Forno.Classico.Pizzeria.enums.Categories;
+import com.example.Il.Forno.Classico.Pizzeria.services.CustomerService;
+import com.example.Il.Forno.Classico.Pizzeria.services.EmployeeService;
+import com.example.Il.Forno.Classico.Pizzeria.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +15,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Контроллер для авторизации и админ-панели
+ */
+
 @Controller
 public class MainController {
     @Autowired
-    private CustomerRepository customerRepository;
+    private CustomerService customerService;
+
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService;
+
     @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private OrderRepository orderRepository;
+    private ProductService productService;
 
     /**
      * Метод возвращает представление страницы для добавления продуктов (блюд)
@@ -36,14 +38,14 @@ public class MainController {
      */
     @GetMapping("/addProduct")
     public String addProductPage(Model model) {
-        List<String> categories = new ArrayList<>();
-        categories.addAll(Arrays.asList("Breakfasts",
+        List<String> categories = new ArrayList<>(Arrays.asList("Breakfasts",
                 "Pizza", "Cold appetizers", "Salads",
                 "Soups", "Regular pasta", "Homemade pasta",
                 "Risotto", "Entrees", "Side dishes", "Desserts",
                 "Tea", "Coffee", "Water", "Freshly squeezed juices",
                 "Soft drinks", "Non-alcoholic cocktails"));
         model.addAttribute("categories", categories);
+        //Categories.Pizza.getName()
         return "addProduct";
     }
 
@@ -61,12 +63,7 @@ public class MainController {
                                @RequestParam("category") String category,
                                @RequestParam("price") double price,
                                @RequestParam("cost") double cost) {
-        Product p = new Product();
-        p.setName(name);
-        p.setCategory(category);
-        p.setPrice(price);
-        p.setCost(cost);
-        productRepository.save(p);
+        productService.addProduct(name, category, price, cost);
         return "menu";
     }
 
@@ -78,19 +75,118 @@ public class MainController {
      */
     @GetMapping("/menu")
     public String menuPage(Model model) {
-        model.addAttribute("products", productRepository.findAll());
+        model.addAttribute("products", productService.findAll());
         return "menu";
     }
 
     /**
-     * Метод возвращает представление страницы для активных заказов
+     * Метод возвращает представление страницы для выбора роли посетителя сайта для авторизации (покупатель или работник)
      *
-     * @param model модель для передачи данных в представлении
-     * @return представление страницы для активных заказов
+     * @return представление страницы для выбора роли посетителя сайта для авторизации (покупатель или работник)
      */
-    @GetMapping("/orders")
-    public String ordersPage(Model model) {
-        model.addAttribute("orders", orderRepository.findAll());
-        return "orders";
+    @GetMapping("/whoToAuthorise")
+    public String whoToAuthorise() {
+        return "whoToAuthorise";
+    }
+
+    /**
+     * Метод возвращает представление страницы для авторизации покупателей
+     *
+     * @return представление страницы для авторизации покупателей
+     */
+    @GetMapping("/guestAuthorisation")
+    public String customerAuthorisationPage() {
+        return "guestAuthorisation";
+    }
+
+    /**
+     * Метод авторизует покупателя (покупатель входит в аккаунт)
+     *
+     * @param nickname логин
+     * @param password пароль
+     * @return представление страницы для меню продуктов при успешной авторизации
+     * или представление страницы об ошибке в противном случае
+     */
+    @PostMapping("/guestLogin")
+    public String guestLogin(@RequestParam("nicknameLogin") String nickname,
+                             @RequestParam("passwordLogin") String password) {
+        if (customerService.login(nickname, password)) {
+            return "redirect:/menu";
+        } else {
+            return "redirect:/loginError";
+        }
+    }
+
+    /**
+     * Метод регистрирует покупателя (покупатель создает новый аккаунт)
+     *
+     * @param name     имя
+     * @param phone    номер телефона
+     * @param nickname логин
+     * @param password пароль
+     * @return представление страницы для меню продуктов при успешной авторизации
+     * или представление страницы об ошибке в противном случае
+     */
+    @PostMapping("/guestRegister")
+    public String guestRegister(@RequestParam("name") String name,
+                                @RequestParam("phone") String phone,
+                                @RequestParam("nickname") String nickname,
+                                @RequestParam("password") String password) {
+        if (customerService.register(name, phone, nickname, password)) {
+            return "redirect:/menu";
+        } else {
+            return "redirect:/registerError";
+        }
+    }
+
+    /**
+     * Метод возвращает представление страницы для авторизации работников
+     *
+     * @return представление страницы для добавления работников
+     */
+    @GetMapping("/employeeAuthorisation")
+    public String employeeAuthorisationPage() {
+        return "employeeAuthorisation";
+    }
+
+    /**
+     * Метод авторизует работника (работник входит в аккаунт)
+     *
+     * @param nickname логин
+     * @param password пароль
+     * @return представление страницы для меню работника при успешной авторизации
+     * или представление страницы об ошибке в противном случае
+     */
+    @PostMapping("/employeeLogin")
+    public String employeeLogin(@RequestParam("nicknameLogin") String nickname,
+                                @RequestParam("passwordLogin") String password) {
+        if (employeeService.login(nickname, password)) {
+            return "redirect:/staffMenu";
+        } else {
+            return "redirect:/loginError";
+        }
+
+    }
+
+    /**
+     * Метод регистрирует работника (работник создает новый аккаунт)
+     *
+     * @param name     имя
+     * @param position должность
+     * @param nickname логин
+     * @param password пароль
+     * @return представление страницы для меню работника при успешной авторизации
+     * или представление страницы об ошибке в противном случае
+     */
+    @PostMapping("/employeeRegister")
+    public String employeeRegister(@RequestParam("name") String name,
+                                   @RequestParam("position") String position,
+                                   @RequestParam("nickname") String nickname,
+                                   @RequestParam("password") String password) {
+        if (employeeService.register(name, position, nickname, password)) {
+            return "redirect:/staffMenu";
+        } else {
+            return "redirect:/registerError";
+        }
     }
 }

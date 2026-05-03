@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Интерфейс для получения данных из таблицы product
+ */
 @Repository
 public interface ProductRepository extends CrudRepository<Product, String> {
     List<Product> findAll();
